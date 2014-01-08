@@ -1,0 +1,35 @@
+<h1>Listing users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Facebook</th>
+      <th>Calender address</th>
+      <th>User name</th>
+      <th>Device token</th>
+      <th>Gmail address</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.facebook_id %></td>
+        <td><%= user.calender_address %></td>
+        <td><%= user.user_name %></td>
+        <td><%= user.device_token %></td>
+        <td><%= user.gmail_address %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

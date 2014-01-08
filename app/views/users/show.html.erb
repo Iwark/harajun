@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @user.facebook_id %>
+</p>
+
+<p>
+  <strong>Calender address:</strong>
+  <%= @user.calender_address %>
+</p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @user.user_name %>
+</p>
+
+<p>
+  <strong>Device token:</strong>
+  <%= @user.device_token %>
+</p>
+
+<p>
+  <strong>Gmail address:</strong>
+  <%= @user.gmail_address %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
