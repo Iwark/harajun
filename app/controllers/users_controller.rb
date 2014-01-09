@@ -24,10 +24,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+
+    @user = User.find_or_initialize_by(facebook_id: user_params[:facebook_id])
 
     respond_to do |format|
-      if @user.save
+      if @user.update_attributes(user_params)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
