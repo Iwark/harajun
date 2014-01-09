@@ -27,15 +27,12 @@ class UsersController < ApplicationController
 
     @user = User.find_or_initialize_by(facebook_id: user_params[:facebook_id])
 
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update_attributes(user_params)
+      render json: @user.groups.to_json
+    else
+      render json: '{error: error}'
     end
+
   end
 
   # PATCH/PUT /users/1
